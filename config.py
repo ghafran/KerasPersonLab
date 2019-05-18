@@ -104,7 +104,7 @@ class config:
     BATCH_NORM_FROZEN = True
 
     # Number of GPUs to distribute across
-    NUM_GPUS = 4
+    NUM_GPUS = 0
 
     # The total batch size will be (NUM_GPUS * BATCH_SIZE_PER_GPU)
     BATCH_SIZE_PER_GPU = 1

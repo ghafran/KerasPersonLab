@@ -25,7 +25,10 @@ H5_DATASET = config.H5_DATASET
 
 num_gpus = config.NUM_GPUS
 batch_size_per_gpu = config.BATCH_SIZE_PER_GPU
-batch_size = num_gpus * batch_size_per_gpu
+if num_gpus > 1:
+    batch_size = num_gpus * batch_size_per_gpu    
+else:
+    batch_size = 1
 
 input_tensors = get_data_input_tensor(batch_size=batch_size)
 for i in range(len(input_tensors)):
