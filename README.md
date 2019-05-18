@@ -1,3 +1,38 @@
+# Setup
+
+```
+git clone git@github.com:ghafran/KerasPersonLab.git
+cd KerasPersonLab
+
+wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip
+wget http://images.cocodataset.org/zips/train2017.zip
+unzip annotations_trainval2017.zip
+unzip train2017.zip
+
+brew install jupyter
+sudo easy_install pip
+sudo pip3 install tensorflow
+sudo pip3 install matplotlib Image
+sudo pip3 install opencv-python
+sudo pip3 install pycocotools tqdm keras
+```
+
+# Study
+
+```
+jupyter notebook
+```
+
+Study buy running generate_hdf5.ipynb
+Study buy running train.ipynb
+
+# Training
+
+```
+python3 generate_hdf5.py 
+python3 train.py
+```
+
 # PersonLab
 
 This is a Keras implementation of [PersonLab](https://arxiv.org/abs/1803.08225) for Multi-Person Pose Estimation and Instance Segmentation.
@@ -36,3 +71,7 @@ This code was tested in the following environment and with the following softwar
 * Tensorflow 1.7
 * Keras 2.1.3
 * OpenCV 2.4.9
+
+Resources
+
+https://github.com/jsbroks/coco-annotator
