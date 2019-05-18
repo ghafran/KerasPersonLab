@@ -36,7 +36,7 @@ class PolyakMovingAverage(Callback):
         self.build_model_func = build_model_func
         super(PolyakMovingAverage, self).__init__()
 
-        self.iter_count = 0L
+        self.iter_count = 0
 
         if mode not in ['auto', 'min', 'max']:
             warnings.warn('ModelCheckpoint mode %s is unknown, '
@@ -80,7 +80,7 @@ class PolyakMovingAverage(Callback):
                   ' averaged weights.')
 
     def on_batch_end(self, batch, logs={}):
-        self.iter_count += 1L
+        self.iter_count += 1
         for weight in self.sym_trainable_weights:
             old_val = self.mv_trainable_weights_vals[weight.name]
             self.mv_trainable_weights_vals[weight.name] -= \

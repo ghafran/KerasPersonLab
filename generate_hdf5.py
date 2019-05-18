@@ -1,11 +1,10 @@
 import os
 import cv2
-import numpy as np
-from pycocotools.coco import COCO
 import h5py
+import numpy as np
 from tqdm import tqdm
-
 from config import config
+from pycocotools.coco import COCO
 
 ANNO_FILE = './annotations/person_keypoints_train2017.json'
 IMG_DIR = './train2017'
