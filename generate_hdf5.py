@@ -7,8 +7,8 @@ from tqdm import tqdm
 
 from config import config
 
-ANNO_FILE = ''
-IMG_DIR = ''
+ANNO_FILE = './annotations/person_keypoints_train2017.json'
+IMG_DIR = './train2017'
 
 coco = COCO(ANNO_FILE)
 img_ids = list(coco.imgs.keys())
@@ -18,7 +18,8 @@ h5_root = data.create_group(name='coco')
 
 for i, img_id in enumerate(tqdm(img_ids)):
     filepath = os.path.join(IMG_DIR, coco.imgs[img_id]['file_name'])
-    img = cv2.imread(filepath, cv2.CV_LOAD_IMAGE_COLOR)
+    img = cv2.imread(filepath)
+    # img = cv2.imread(filepath, cv2.CV_LOAD_IMAGE_COLOR)
     h, w, c = img.shape
 
     crowd_mask = np.zeros((h, w), dtype='bool')
@@ -30,8 +31,8 @@ for i, img_id in enumerate(tqdm(img_ids)):
     if len(img_anns) == 0:
         continue
     for anno in img_anns:
-	if anno['area']==0:
-	    continue
+        if anno['area']==0:
+            continue
         mask = coco.annToMask(anno)
 
         # if crowd, don't compute loss
