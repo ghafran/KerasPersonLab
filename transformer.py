@@ -91,7 +91,12 @@ class Transformer:
         img = cv2.warpAffine(img, M, cv_shape, flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_CONSTANT, borderValue=(127,127,127))
         
         # concat = np.stack(output_transform_targets, axis=-1)
-        masks = cv2.warpAffine(masks, M, cv_shape, flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_CONSTANT, borderValue=0)
+        # fix from https://github.com/octiapp/KerasPersonLab/issues/2
+        # masks = cv2.warpAffine(masks, M, cv_shape, flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_CONSTANT, borderValue=0)
+        out_masks = np.zeros(cv_shape[::-1]+(masks.shape[-1],))
+        for i in range(masks.shape[-1]):
+            out_masks[:,:,i] = cv2.warpAffine(masks[:,:,i], M, cv_shape, flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_CONSTANT, borderValue=0)
+        masks = out_masks
 
         # warp key points
         #TODO: joint could be cropped by augmentation, in this case we should mark it as invisible.
