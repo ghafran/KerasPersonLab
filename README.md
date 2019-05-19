@@ -1,6 +1,14 @@
 # Setup
 
+This only runs on python version 2.*
+
+Download https://drive.google.com/open?id=1ulygah5BTWjhSGGpN20-eYV5NAozdE8Z
+Copy it to ~/.keras/models/
+
 ```
+brew install python@2
+python --version
+
 git clone git@github.com:ghafran/KerasPersonLab.git
 cd KerasPersonLab
 
@@ -9,12 +17,19 @@ wget http://images.cocodataset.org/zips/train2017.zip
 unzip annotations_trainval2017.zip
 unzip train2017.zip
 
-brew install jupyter
 sudo easy_install pip
-sudo pip3 install tensorflow
-sudo pip3 install matplotlib Image
-sudo pip3 install opencv-python
-sudo pip3 install pycocotools tqdm keras
+sudo pip install tensorflow
+sudo pip install matplotlib Image
+sudo pip install opencv-python
+sudo pip install cython
+sudo pip install pycocotools
+sudo pip install tqdm
+sudo pip install keras
+
+python -m pip install ipykernel
+python -m ipykernel install --user
+
+brew install jupyter
 ```
 
 # Study

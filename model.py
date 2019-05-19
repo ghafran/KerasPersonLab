@@ -159,7 +159,7 @@ def get_losses(ground_truth, outputs):
 
     return losses
 
-def get_personlab(train=False, input_tensors=None, with_preprocess_lambda=True, build_base_func=get_resnet50_base,
+def get_personlab(train=False, input_tensors=None, with_preprocess_lambda=True, build_base_func=get_resnet101_base,
                   intermediate_supervision=False, intermediate_layer=None, output_stride=config.OUTPUT_STRIDE):
     '''
     Constructs the PersonLab model and returns the model object without compiling

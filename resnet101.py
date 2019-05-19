@@ -18,6 +18,8 @@ if config.BATCH_NORM_FROZEN:
 else:
     BatchNormalization = KL.BatchNormalization
 
+WEIGHTS_PATH_NO_TOP = 'https://github.com/fchollet/deep-learning-models/releases/download/v0.2/resnet50_weights_tf_dim_ordering_tf_kernels_notop.h5'
+
 def identity_block(input_tensor, kernel_size, filters, stage, block, dilation=1):
     '''The identity_block is the block that has no conv layer at shortcut
     # Arguments

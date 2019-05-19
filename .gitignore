@@ -1,5 +1,6 @@
 *.zip
 *.h5
+*.pyc
 annotations
 train2017
 __pycache__
